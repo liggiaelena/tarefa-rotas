@@ -1,0 +1,33 @@
+<div class="container mt-5">
+    <h2>Cadastrar Usuário</h2>
+    <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+      <div class="form-group">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" class="form-control" [(ngModel)]="name" name="name" ngModel required>
+        <div *ngIf="userForm.submitted && !userForm.controls['name'].valid" class="text-danger">
+          Nome é obrigatório.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Senha:</label>
+        <input type="password" id="password" class="form-control" [(ngModel)]=password name="password" ngModel required minlength="6" maxlength="20">
+        <div *ngIf="userForm.submitted && !userForm.controls['password'].valid" class="text-danger">
+          Senha é obrigatória e deve ter entre 6 e 20 caracteres.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirmação de Senha:</label>
+        <input type="password" id="confirmPassword" class="form-control" name="confirmPassword" ngModel required minlength="6" maxlength="20">
+        <div *ngIf="userForm.submitted && !userForm.controls['confirmPassword'].valid" class="text-danger">
+          Confirmação de senha é obrigatória e deve ter entre 6 e 20 caracteres.
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary mt-3">Enviar</button>
+    </form>
+    <div *ngIf="submitted" class="alert alert-success mt-3">
+      Salvo com sucesso.
+    </div>
+    <div *ngIf="message" class="alert alert-success mt-4">
+        {{ message }}
+      </div>
+  </div>
