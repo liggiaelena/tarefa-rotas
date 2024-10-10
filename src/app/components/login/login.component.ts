@@ -15,7 +15,7 @@ export class LoginComponent {
 
   login() {
     if (this.username === 'admin' && this.password === '123') {
-      this.router.navigate(['/home'], { state: { username: this.username } });
+      this.router.navigate(['/home',this.username]);
     } else {
       this.errorMessage = 'Usuário ou senha inválido';
     }

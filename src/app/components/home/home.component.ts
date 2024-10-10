@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,11 +9,9 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit{
   username: string = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: ActivatedRoute) {}
 
   ngOnInit() {
-    const navigation = this.router.getCurrentNavigation();
-    const state = navigation?.extras.state as { username: string };
-    this.username = state?.username || 'Admin';
+    this.username = this.router.snapshot.params['user'] || 0;
   }
 }
